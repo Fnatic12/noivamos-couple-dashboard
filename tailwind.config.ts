@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,29 +62,44 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				noivamos: {
+					gold: '#FFC200',
+					'border-red': '#9E2B25',
+					'border-blue': '#2B5797',
+					'border-purple': '#5C2D91',
+					'border-gold': '#C8A415',
+					'bg-light': '#FFFCF0',
+					'text-dark': '#333333',
+				},
+			},
+			fontFamily: {
+				'garamond': ['"EB Garamond"', 'serif'],
+				'avenir': ['"Nunito Sans"', 'sans-serif'], // Using Nunito Sans as a close alternative to Avenir
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			boxShadow: {
+				'elevation-1': '0 2px 4px rgba(0, 0, 0, 0.1)',
+			},
+			spacing: {
+				'stack-md': '24px',
+				'inline-md': '24px',
+			},
+			gridTemplateColumns: {
+				'12-xl': 'repeat(12, 1fr)',
+			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				}
 			},
 			animation: {
