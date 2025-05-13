@@ -6,6 +6,7 @@
   --noivamos-border-blue: #2B5797;
   --noivamos-border-purple: #5C2D91;
   --noivamos-border-gold: #C8A415;
+  --noivamos-bg-light: #FFFCF0;
 }
 
 body {
@@ -20,4 +21,18 @@ body {
 
 .font-avenir {
   font-family: "Nunito Sans", sans-serif;
+}
+
+/* Ensure rounded corners everywhere */
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+/* Dialog styling overrides for rounded corners */
+[data-radix-popper-content-wrapper] {
+  border-radius: 0.5rem;
 }

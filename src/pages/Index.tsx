@@ -1,10 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Plus } from 'lucide-react';
+import CreateCommitmentModal from '../components/CreateCommitmentModal';
+import CommitmentCard from '../components/CommitmentCard';
 
 const Dashboard: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
@@ -23,16 +31,16 @@ const Dashboard: React.FC = () => {
           <h2 className="font-garamond text-2xl mb-4">Compromissos do casal</h2>
           <div className="grid grid-cols-4 gap-6">
             {[
-              { color: 'noivamos-border-gold' },
-              { color: 'noivamos-border-red' },
-              { color: 'noivamos-border-blue' },
-              { color: 'noivamos-border-purple' },
+              { color: 'var(--noivamos-border-gold)' },
+              { color: 'var(--noivamos-border-red)' },
+              { color: 'var(--noivamos-border-blue)' },
+              { color: 'var(--noivamos-border-purple)' },
             ].map((item, index) => (
-              <div key={index} className="h-36 bg-gray-100 relative" style={{ borderLeft: `8px solid var(--${item.color})` }}>
-                <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-12 h-12 flex items-center justify-center">
-                  <Plus className="w-6 h-6" />
-                </button>
-              </div>
+              <CommitmentCard 
+                key={index} 
+                borderColor={item.color} 
+                onClick={openModal}
+              />
             ))}
           </div>
         </div>
@@ -41,26 +49,26 @@ const Dashboard: React.FC = () => {
         <div className="px-12 py-6 grid grid-cols-12 gap-6">
           {/* Visão Geral */}
           <div className="col-span-5">
-            <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center">
+            <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center rounded-t-lg">
               <h3 className="font-garamond font-normal text-2xl">Visão Geral</h3>
               <button className="w-6 h-6 flex items-center justify-center text-white">
                 <Plus size={20} />
               </button>
             </div>
-            <div className="bg-gray-100 h-96"></div>
+            <div className="bg-gray-100 h-96 rounded-b-lg"></div>
           </div>
           
           {/* Right Content Section */}
           <div className="col-span-7 flex flex-col gap-6">
             {/* Calendário */}
             <div>
-              <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center">
+              <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center rounded-t-lg">
                 <h3 className="font-garamond font-normal text-2xl">Calendário</h3>
                 <button className="w-6 h-6 flex items-center justify-center text-white">
                   <Plus size={20} />
                 </button>
               </div>
-              <div className="bg-gray-100 p-4">
+              <div className="bg-gray-100 p-4 rounded-b-lg">
                 <div className="mb-2 font-garamond">2025</div>
                 <div className="grid grid-cols-4 gap-3">
                   {[
@@ -70,7 +78,7 @@ const Dashboard: React.FC = () => {
                   ].map((month) => (
                     <div key={month} className="space-y-1">
                       <div className="font-garamond">{month}</div>
-                      <div className="bg-gray-400 h-16"></div>
+                      <div className="bg-gray-400 h-16 rounded-md"></div>
                     </div>
                   ))}
                 </div>
@@ -79,19 +87,25 @@ const Dashboard: React.FC = () => {
             
             {/* Lembretes */}
             <div>
-              <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center">
+              <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center rounded-t-lg">
                 <h3 className="font-garamond font-normal text-2xl">Lembretes</h3>
                 <button className="w-6 h-6 flex items-center justify-center text-white">
                   <Plus size={20} />
                 </button>
               </div>
-              <div className="bg-gray-100 h-44"></div>
+              <div className="bg-gray-100 h-44 rounded-b-lg"></div>
             </div>
           </div>
         </div>
       </main>
       
       <Footer />
+      
+      {/* Commitment Modal */}
+      <CreateCommitmentModal 
+        open={isModalOpen} 
+        onOpenChange={setIsModalOpen} 
+      />
     </div>
   );
 };
