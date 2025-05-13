@@ -1,82 +1,97 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import CommitmentCard from '../components/CommitmentCard';
-import ContentBlock from '../components/ContentBlock';
-import CalendarGrid from '../components/CalendarGrid';
-import CreateCommitmentModal from '../components/CreateCommitmentModal';
 import { Plus } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
       
       <main className="flex-1 w-full">
-        <div className="w-full px-24">
-          {/* Top Section - Welcome */}
-          <section className="mt-16 mb-16">
-            <h1 className="font-garamond font-bold text-5xl text-noivamos-gold">Olá Cynthia!</h1>
-          </section>
+        {/* Couple Section */}
+        <div className="px-12 border-b border-gray-200">
+          <div className="flex items-center gap-6 py-6">
+            <div className="w-24 h-24 bg-gray-300 rounded-full"></div>
+            <h1 className="font-garamond text-4xl">Victor & Carol</h1>
+          </div>
+        </div>
+        
+        {/* Commitments Section */}
+        <div className="px-12 py-6 border-b border-gray-200">
+          <h2 className="font-garamond text-2xl mb-4">Compromissos do casal</h2>
+          <div className="grid grid-cols-4 gap-6">
+            {[
+              { color: 'noivamos-border-gold' },
+              { color: 'noivamos-border-red' },
+              { color: 'noivamos-border-blue' },
+              { color: 'noivamos-border-purple' },
+            ].map((item, index) => (
+              <div key={index} className="h-36 bg-gray-100 relative" style={{ borderLeft: `8px solid var(--${item.color})` }}>
+                <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-12 h-12 flex items-center justify-center">
+                  <Plus className="w-6 h-6" />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="px-12 py-6 grid grid-cols-12 gap-6">
+          {/* Visão Geral */}
+          <div className="col-span-5">
+            <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center">
+              <h3 className="font-garamond font-normal text-2xl">Visão Geral</h3>
+              <button className="w-6 h-6 flex items-center justify-center text-white">
+                <Plus size={20} />
+              </button>
+            </div>
+            <div className="bg-gray-100 h-96"></div>
+          </div>
           
-          {/* Main Content Grid - Two Columns */}
-          <div className="grid grid-cols-12 gap-8 mb-16">
-            {/* Tasks Column */}
-            <div className="col-span-6">
-              <div className="bg-white border border-gray-200 rounded-md">
-                <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200">
-                  <h2 className="font-garamond font-bold text-2xl">Tarefas</h2>
-                  <button className="text-noivamos-gold flex items-center text-sm font-avenir">
-                    criar nova tarefa <Plus size={16} className="ml-1" />
-                  </button>
-                </div>
-                <div className="p-6 min-h-[300px] flex items-center justify-center">
-                  <p className="text-gray-500 font-avenir">Nenhuma tarefa criada</p>
+          {/* Right Content Section */}
+          <div className="col-span-7 flex flex-col gap-6">
+            {/* Calendário */}
+            <div>
+              <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center">
+                <h3 className="font-garamond font-normal text-2xl">Calendário</h3>
+                <button className="w-6 h-6 flex items-center justify-center text-white">
+                  <Plus size={20} />
+                </button>
+              </div>
+              <div className="bg-gray-100 p-4">
+                <div className="mb-2 font-garamond">2025</div>
+                <div className="grid grid-cols-4 gap-3">
+                  {[
+                    "Jan", "Fev", "Mar", "Apr",
+                    "May", "Jun", "Jul", "Aug",
+                    "Sep", "Oct", "Nov", "Dec"
+                  ].map((month) => (
+                    <div key={month} className="space-y-1">
+                      <div className="font-garamond">{month}</div>
+                      <div className="bg-gray-400 h-16"></div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             
-            {/* Dashboards Column */}
-            <div className="col-span-6">
-              <div className="bg-white border border-gray-200 rounded-md">
-                <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200">
-                  <h2 className="font-garamond font-bold text-2xl">Dashboards</h2>
-                  <button className="text-noivamos-gold flex items-center text-sm font-avenir">
-                    criar novo dashboard <Plus size={16} className="ml-1" />
-                  </button>
-                </div>
-                <div className="p-6 min-h-[300px] flex items-center justify-center">
-                  <p className="text-gray-500 font-avenir">Nenhum dashboard criado</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Received Value Section */}
-          <section className="mb-16 flex justify-end">
-            <div className="border border-gray-200 rounded-md w-[300px]">
-              <div className="p-6">
-                <h3 className="text-base font-avenir font-medium mb-2">Valor de Rev Recebido</h3>
-                <p className="font-garamond font-bold text-3xl mb-4">R$ 200,00</p>
-                <button className="w-full bg-noivamos-gold text-white py-2 rounded-md font-avenir">
-                  Sacar
+            {/* Lembretes */}
+            <div>
+              <div className="bg-noivamos-gold text-white px-4 py-3 flex justify-between items-center">
+                <h3 className="font-garamond font-normal text-2xl">Lembretes</h3>
+                <button className="w-6 h-6 flex items-center justify-center text-white">
+                  <Plus size={20} />
                 </button>
               </div>
+              <div className="bg-gray-100 h-44"></div>
             </div>
-          </section>
+          </div>
         </div>
       </main>
       
       <Footer />
-
-      {/* Create Commitment Modal */}
-      <CreateCommitmentModal 
-        open={isCreateModalOpen}
-        onOpenChange={setIsCreateModalOpen}
-      />
     </div>
   );
 };

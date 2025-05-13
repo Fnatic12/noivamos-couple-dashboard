@@ -4,8 +4,8 @@ import { Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-noivamos-gold mt-12">
-      <div className="layout-grid-xl py-4 flex justify-between items-center text-white">
+    <footer className="w-full bg-noivamos-gold">
+      <div className="px-12 py-4 flex justify-between items-center text-white">
         <div className="font-garamond font-bold text-xl">
           Noivamos
         </div>

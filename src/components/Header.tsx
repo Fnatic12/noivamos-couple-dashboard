@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
   return (
     <header className="w-full bg-white border-b border-gray-200">
-      <div className="layout-grid-xl py-4 flex justify-between items-center">
+      <div className="px-12 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/" className="text-noivamos-gold font-garamond font-bold text-2xl tracking-wider">
             NÕIVAMOS
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link to="/profile" className="hover:underline transition-colors font-medium">
+              <Link to="/profile" className="hover:underline transition-colors">
                 Cynthia
               </Link>
             </li>

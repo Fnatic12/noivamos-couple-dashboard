@@ -1,1 +1,23 @@
-/* Clean slate - removing unnecessary styles */
+
+/* Base styles */
+:root {
+  --noivamos-gold: #FFC200;
+  --noivamos-border-red: #9E2B25;
+  --noivamos-border-blue: #2B5797;
+  --noivamos-border-purple: #5C2D91;
+  --noivamos-border-gold: #C8A415;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #FFFFFF;
+  color: #333333;
+}
+
+.font-garamond {
+  font-family: "EB Garamond", serif;
+}
+
+.font-avenir {
+  font-family: "Nunito Sans", sans-serif;
+}
