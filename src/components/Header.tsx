@@ -7,8 +7,8 @@ const Header: React.FC = () => {
     <header className="w-full bg-white border-b border-gray-200">
       <div className="layout-grid-xl py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/" className="text-noivamos-gold font-garamond font-bold text-2xl">
-            NOIVAMOS
+          <Link to="/" className="text-noivamos-gold font-garamond font-bold text-2xl tracking-wider">
+            NÕIVAMOS
           </Link>
         </div>
         

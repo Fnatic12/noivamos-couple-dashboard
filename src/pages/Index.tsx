@@ -6,56 +6,68 @@ import CommitmentCard from '../components/CommitmentCard';
 import ContentBlock from '../components/ContentBlock';
 import CalendarGrid from '../components/CalendarGrid';
 import CreateCommitmentModal from '../components/CreateCommitmentModal';
+import { Plus } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
       
-      <main className="flex-1 layout-grid-xl py-8">
-        {/* Couple Information */}
-        <section className="flex items-center mb-8 border-b pb-8">
-          <div className="w-20 h-20 rounded-full bg-gray-200 flex-shrink-0"></div>
-          <h1 className="font-garamond font-bold text-4xl ml-6">Victor & Carol</h1>
-        </section>
-        
-        {/* Commitments Section */}
-        <section className="mb-8">
-          <h2 className="font-garamond font-bold text-2xl mb-4">Compromissos do casal</h2>
+      <main className="flex-1 w-full">
+        <div className="w-full px-24">
+          {/* Top Section - Welcome */}
+          <section className="mt-16 mb-16">
+            <h1 className="font-garamond font-bold text-5xl text-noivamos-gold">Olá Cynthia!</h1>
+          </section>
           
-          <div className="flex gap-6">
-            <CommitmentCard borderColor="#C8A415" />
-            <CommitmentCard borderColor="#9E2B25" />
-            <CommitmentCard borderColor="#2B5797" />
-            <CommitmentCard borderColor="#5C2D91" />
-          </div>
-        </section>
-        
-        {/* Content Grid */}
-        <section className="grid grid-cols-12 gap-6">
-          {/* Overview Block */}
-          <div className="col-span-4">
-            <ContentBlock title="Visão Geral">
-              <div className="h-96"></div>
-            </ContentBlock>
+          {/* Main Content Grid - Two Columns */}
+          <div className="grid grid-cols-12 gap-8 mb-16">
+            {/* Tasks Column */}
+            <div className="col-span-6">
+              <div className="bg-white border border-gray-200 rounded-md">
+                <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200">
+                  <h2 className="font-garamond font-bold text-2xl">Tarefas</h2>
+                  <button className="text-noivamos-gold flex items-center text-sm font-avenir">
+                    criar nova tarefa <Plus size={16} className="ml-1" />
+                  </button>
+                </div>
+                <div className="p-6 min-h-[300px] flex items-center justify-center">
+                  <p className="text-gray-500 font-avenir">Nenhuma tarefa criada</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Dashboards Column */}
+            <div className="col-span-6">
+              <div className="bg-white border border-gray-200 rounded-md">
+                <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200">
+                  <h2 className="font-garamond font-bold text-2xl">Dashboards</h2>
+                  <button className="text-noivamos-gold flex items-center text-sm font-avenir">
+                    criar novo dashboard <Plus size={16} className="ml-1" />
+                  </button>
+                </div>
+                <div className="p-6 min-h-[300px] flex items-center justify-center">
+                  <p className="text-gray-500 font-avenir">Nenhum dashboard criado</p>
+                </div>
+              </div>
+            </div>
           </div>
           
-          {/* Calendar Block */}
-          <div className="col-span-5">
-            <ContentBlock title="Calendário">
-              <CalendarGrid />
-            </ContentBlock>
-          </div>
-          
-          {/* Reminders Block */}
-          <div className="col-span-3">
-            <ContentBlock title="Lembretes">
-              <div className="h-96"></div>
-            </ContentBlock>
-          </div>
-        </section>
+          {/* Received Value Section */}
+          <section className="mb-16 flex justify-end">
+            <div className="border border-gray-200 rounded-md w-[300px]">
+              <div className="p-6">
+                <h3 className="text-base font-avenir font-medium mb-2">Valor de Rev Recebido</h3>
+                <p className="font-garamond font-bold text-3xl mb-4">R$ 200,00</p>
+                <button className="w-full bg-noivamos-gold text-white py-2 rounded-md font-avenir">
+                  Sacar
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
       </main>
       
       <Footer />
